@@ -1,0 +1,25 @@
+<div class="flex absolute justify-end flex-col -bottom-0 w-full z-200 bg-blue-200">
+
+    <div class="flex  gap-2 justify-center items-center w-full">
+    <ul class="flex  gap-5 w-full !m-0 px-10">
+      @for (item of menuItems; track item) {
+        <li
+          class="cursor-pointer py-3 flex items-center gap-3 rounded-full text-center transition-all duration-300 ease-in-out"
+          [ngClass]="{
+            'px-5 justify-start w-full text-base text-blue-600 hover:bg-gray-200 hover:text-blue-600': !isCollapsed(),
+            'justify-center w-20 text-transparent overflow-x-hidden': isCollapsed(),
+            'bg-white transition-all -translate-y-2 ease-in': activeRoute() === item.route
+          }"
+          (click)="navigateTo(item.route)"
+        >
+          <i-lucide [img]="item.icon" class="w-5 h-5 text-blue-600"></i-lucide>
+
+          @if (!isCollapsed()) {
+            <span>{{ item.label }}</span>
+          }
+        </li>
+      }
+    </ul>
+  </div>
+</div>
+
