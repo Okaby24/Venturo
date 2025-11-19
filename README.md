@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-# FplGuess
+# Venturo
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.0.
 
@@ -61,4 +60,4 @@ For more information on using the Angular CLI, including detailed command refere
 =======
 # Venturo
 Venturo connects early-stage startups with low-budget investors. Startups can register, showcase their ideas, and gain visibility. Venturo also offers career opportunities, along with jobs from registered startups, creating a space for growth, investment, and talent.
->>>>>>> 2e42504ad603112004d6835b16c84ee6bbdb89ed
+2e42504ad603112004d6835b16c84ee6bbdb89ed
