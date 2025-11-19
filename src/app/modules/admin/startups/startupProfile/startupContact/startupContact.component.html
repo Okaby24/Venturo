@@ -1,0 +1,104 @@
+<div class="w-full p-10 h-screen bg-neutral-100 overflow-y-auto flex lg:flex-row flex-col gap-5">
+
+  <!-- Appointment Form -->
+  <div class="bg-white rounded-2xl shadow-md p-8 flex-1">
+    <h1 class="text-3xl font-bold text-blue-600 ">Schedule an Appointment</h1>
+    
+    <form class="space-y-5" (ngSubmit)="submitAppointment()">
+      <div>
+        <label class="block text-gray-700 ">Full Name</label>
+        <input
+          type="text"
+          [(ngModel)]="appointment.name"
+          name="name"
+          required
+          class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <div>
+        <label class="block text-gray-700 ">Email</label>
+        <input
+          type="email"
+          [(ngModel)]="appointment.email"
+          name="email"
+          required
+          class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <div>
+        <label class="block text-gray-700 ">Phone Number</label>
+        <input
+          type="tel"
+          [(ngModel)]="appointment.phone"
+          name="phone"
+          required
+          class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <div>
+        <label class="block text-gray-700 ">Preferred Date & Time</label>
+        <input
+          type="datetime-local"
+          [(ngModel)]="appointment.dateTime"
+          name="dateTime"
+          required
+          class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <div>
+        <label class="block text-gray-700 ">Message (Optional)</label>
+        <textarea
+          [(ngModel)]="appointment.message"
+          name="message"
+          rows="4"
+          class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        ></textarea>
+      </div>
+
+      <button
+        type="submit"
+        class="bg-blue-600 !text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition cursor-pointer"
+      >
+        Book Appointment
+      </button>
+    </form>
+  </div>
+
+  <!-- Contact Info -->
+  <div class="bg-white rounded-2xl shadow-md p-8 flex-1 flex flex-col gap-5">
+    <div>
+
+      <h1 class="text-3xl font-bold !text-blue-600 ">Contact Info</h1>
+  
+      <div class="space-y-5 text-gray-700">
+        <div class="flex items-center gap-3">
+          <span class="text-blue-600 text-xl">📍</span>
+          <span>123 Startup Avenue, Cairo, Egypt</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-blue-600 text-xl">📞</span>
+          <span>+20 123 456 7890</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-blue-600 text-xl">✉️</span>
+          <span>contact@ourplatform.com</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-blue-600 text-xl">🌐</span>
+          <a href="https://www.ourplatform.com" class="hover:underline text-blue-600">www.ourplatform.com</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="">
+      <h2 class="text-2xl font-semibold !text-blue-600 ">Working Hours</h2>
+      <p>Monday - Thursday:<strong> 9:00 AM - 6:00 PM</strong></p>
+      <p>Friday & Saturday: <strong>OFF</strong></p>
+    </div>
+  </div>
+
+</div>

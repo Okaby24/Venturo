@@ -1,0 +1,74 @@
+<!-- Collapse / Expand Button -->
+ @if(isHiddenOnMobile()){
+
+  <div class="bg-red-500 p-20 flex justify-center z-200">
+hjvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+
+  </div>
+
+
+ }
+ @else {
+  <i-lucide
+  [img]="sidebarSqueeze"
+  class="bg-white [>svg]:p-2 rounded-full [>svg]:w-10 [>svg]:h-10 absolute left-30 top-2 z-20 text-blue-600"
+  (click)="squeeze()"
+  [class.rotate-180]="isCollapsed()"
+  [class.hidden]="isHiddenOnMobile()"    
+></i-lucide>
+
+<!-- Sidebar Wrapper -->
+<div
+  class="h-full bg-blue-200 flex flex-col gap-20 items-center py-10 relative transition-all duration-300 ease-in-out overflow-y-auto"
+  [ngClass]="{
+    'w-64': !isCollapsed() && !isHiddenOnMobile(),
+    'w-20': isCollapsed() && !isHiddenOnMobile(),           
+  }"
+  (click)="expand()"
+>
+
+  <!-- Logo -->
+  @if (isCollapsed()) {
+    <img
+      src="assets/venturoLetter.svg"
+      alt="Venturo logo"
+      class="transition-all duration-300 cursor-pointer"
+      (click)="navigateTo('home')"
+    />
+  }
+  @else {
+    <img
+      src="assets/venturoWord.svg"
+      alt="Venturo logo"
+      class="transition-all duration-300 w-[80%] cursor-pointer"
+      (click)="navigateTo('home')"
+    />
+  }
+
+  <!-- Menu -->
+  <div class="flex flex-col gap-2 justify-center items-center w-full">
+    <ul class="flex flex-col gap-5 w-full">
+      @for (item of menuItems; track item) {
+        <li
+          class="cursor-pointer py-3 flex items-center gap-3 rounded-xl text-center transition-all duration-300 ease-in-out"
+          [ngClass]="{
+            'px-5 justify-start w-full text-base text-blue-600 hover:bg-gray-200 hover:text-blue-600': !isCollapsed(),
+            'justify-center w-20 text-transparent overflow-x-hidden': isCollapsed(),
+            'bg-gray-200': activeRoute() === item.route
+          }"
+          (click)="navigateTo(item.route)"
+        >
+          <i-lucide [img]="item.icon" class="w-5 h-5 text-blue-600"></i-lucide>
+
+          @if (!isCollapsed()) {
+            <span>{{ item.label }}</span>
+          }
+        </li>
+      }
+    </ul>
+  </div>
+
+</div>
+
+
+ }

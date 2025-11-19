@@ -1,0 +1,42 @@
+<div class="w-full p-6 sm:p-10 h-screen bg-neutral-100 overflow-y-auto flex lg:flex-row flex-col gap-5  gap-5">
+  <div class="col-span-1 bg-white rounded-xl !p-4 sm:p-1 drop-shadow-xl border border-gray-300 w-full flex flex-col gap-5 lg:overflow-y-auto">
+    <span class="text-blue-600 text-2xl font-semibold ">Careers At Venturo</span>
+
+    <div class="flex flex-col gap-5 overflow-y-auto">
+    @for(job of jobs(); track job.label){
+      <div class="bg-gray-100 border border-gray-200 p-2 rounded-lg flex flex-col gap-2 ">
+        <span>{{job.label}}</span>
+        <span>{{job.experienceLevel}}</span>
+        <span>{{job.description}}</span>
+
+        <div class="flex justify-end">
+          <button class="bg-blue-600 !text-white px-4 py-2 rounded-xl flex justify-center items-center cursor-pointer">Apply Now</button>
+        </div>
+      </div>
+
+    }
+    </div>
+  </div>
+  <div class="col-span-1 bg-white rounded-xl !p-4 sm:p-1 drop-shadow-xl border border-gray-300 w-full flex flex-col gap-5 lg:overflow-y-auto">
+    <span class="text-blue-600 text-2xl font-semibold ">Careers At Our Startups</span>
+
+    <div class="flex flex-col gap-5 overflow-y-auto">
+     @for(job of StartupJobs(); track job.label){
+      <div class="bg-gray-100 border border-gray-200 p-2 rounded-lg flex flex-col gap-2">
+        <span>{{job.startupName}}</span>
+        <span>{{job.label}}</span>
+        <span>{{job.experienceLevel}}</span>
+        <span>{{job.description}}</span>
+
+        <div class="flex justify-end">
+          <button class="bg-blue-600 !text-white px-4 py-2 rounded-xl flex justify-center items-center cursor-pointer">Apply Now</button>
+        </div>
+      </div>
+
+    }
+    </div>
+  </div>
+
+  
+
+</div>

@@ -1,0 +1,54 @@
+@if (logged) {
+<!-- Outer wrapper (no flex needed when using fixed sidebar) -->
+<div
+  class="transition-all duration-1000 ease-in-out opacity-0 animate-fade-in relative"
+>
+  <!-- ✅ Fixed Sidebar -->
+
+  <aside
+  class="fixed top-0 left-0 h-screen bg-blue-800 text-white z-30 transition-all duration-500 ease-in-out"
+  [ngClass]="{
+    'w-64': !isCollapsed() && !isHiddenOnMobile(),
+    'w-20': isCollapsed() && !isHiddenOnMobile(),
+    '!w-0 hidden': isHiddenOnMobile()
+  }"
+>
+  <app-sidebar></app-sidebar>
+</aside>
+
+  <!-- ✅ Main Content -->
+  <main
+  class="overflow-y-auto transition-all duration-500 ease-in-out bg-gray-50"
+  [ngClass]="{
+    'ml-64': !isCollapsed(),
+    'ml-20': isCollapsed(),
+    '!ml-0': isHiddenOnMobile()
+  }"
+>
+  <router-outlet></router-outlet>
+</main>
+</div>
+} @else {
+<div
+  class="bg-blue-200 h-screen flex flex-col justify-center items-center gap-6 transition-all duration-700 ease-in-out opacity-0 animate-fade-in"
+>
+  <img
+    src="assets/venturoWord.svg"
+    alt="Venturo logo"
+    class="w-80 opacity-0 animate-fade-in"
+  />
+
+  <!-- Modern Loading Animation -->
+  <div class="flex items-center space-x-2">
+    <div
+      class="w-3 h-3 bg-blue-600 rounded-full animate-bounce delay-[0ms]"
+    ></div>
+    <div
+      class="w-3 h-3 bg-blue-600 rounded-full animate-bounce delay-[150ms]"
+    ></div>
+    <div
+      class="w-3 h-3 bg-blue-600 rounded-full animate-bounce delay-[300ms]"
+    ></div>
+  </div>
+</div>
+}

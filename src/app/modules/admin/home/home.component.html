@@ -1,0 +1,75 @@
+<div class="w-full p-6 sm:p-10 h-screen bg-neutral-100 overflow-y-auto">
+  <div class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5 w-full">
+    <!-- Total existing Startups -->
+    <div class="bg-white p-4 sm:p-6 md:order-1 col-span-1 rounded-xl drop-shadow-xl hover:transition-all hover:-translate-2 hover:duration-500 hover:ease-in-out">
+      <div class="flex flex-col gap-4">
+        <span class="font-bold text-2xl md:text-lg text-blue-600 text-nowrap">Total Existing Startups</span>
+        <span class="font-semibold text-green-600 text-4xl">8</span>
+
+    
+      </div>
+    </div>
+    <!-- under investigation -->
+    <div class="bg-white p-4 sm:p-6 md:order-2 col-span-1 rounded-xl drop-shadow-xl hover:transition-all hover:-translate-2 hover:duration-500 hover:ease-in-out">
+      <div class="flex flex-col gap-4">
+        <span class="font-bold text-2xl md:text-lg  text-blue-600 text-nowrap">Under Investigation Startups</span>
+        <span class="font-semibold text-purple-600 text-4xl">2</span>
+
+     
+      </div>
+    </div>
+    <!-- total existing -->
+   <div class="bg-white p-4 sm:p-6 md:order-3 col-span-1 rounded-xl drop-shadow-xl hover:transition-all hover:-translate-2 hover:duration-500 hover:ease-in-out">
+      <div class="flex flex-col gap-4">
+        <span class="font-bold text-2xl md:text-lg  text-blue-600 text-nowrap">Total Existing Startups</span>
+        <span class="font-semibold text-orange-600 text-4xl">8</span>
+
+      
+      </div>
+    </div>
+
+    <div class="bg-white lg:py-11 p-6  md:order-4 lg:col-span-3 sm:col-span-1 rounded-xl drop-shadow-xl hover:transition-all hover:-translate-2 hover:duration-500 hover:ease-in-out">
+      <div class="flex lg:justify-between lg:items-center lg:flex-row flex-col gap-4">
+        <span class="font-bold text-2xl md:text-lg  text-blue-600 text-nowrap">Total undergoing negotiations</span>
+        <span class="font-semibold text-orange-600 text-4xl">4</span>
+
+      
+      </div>
+    </div>
+
+<!-- dashboard -->
+    <div class="bg-white p-4 sm:p-6 lg:order-5 md:order-6 lg:col-span-2 md:col-span-2 lg:col-span-1 rounded-xl drop-shadow-xl">
+        <h1 class="text-2xl font-semibold text-slate-700">Dashboard Overview</h1>
+
+  <div
+    class="p-5 bg-white shadow-md rounded-2xl transition-all duration-700 ease-in-out hover:shadow-lg "
+  >
+    <apx-chart
+      [series]="barChartOptions.series!"
+      [chart]="barChartOptions.chart!"
+      [xaxis]="barChartOptions.xaxis!"
+      [dataLabels]="barChartOptions.dataLabels!"
+      [plotOptions]="barChartOptions.plotOptions!"
+      [stroke]="barChartOptions.stroke!"
+      [grid]="barChartOptions.grid!"
+      [title]="barChartOptions.title!"
+      class="w-full h-fit"
+    ></apx-chart>
+  </div>
+
+    </div>
+
+    <!-- top 5 startups -->
+     <div class="bg-white p-4 sm:p-6 lg:order-6 sm:order-5 lg:col-span-1 md:col-span-2 rounded-xl drop-shadow-xl flex flex-col gap-8">
+      <span class="font-bold text-2xl text-blue-600">Top 5 Startups</span>
+      <div class="flex flex-col gap-4">
+      <span class="text-lg font-semibold">Startup 1</span>
+      <span class="text-lg font-semibold">Startup 1</span>
+      <span class="text-lg font-semibold">Startup 1</span>
+      <span class="text-lg font-semibold">Startup 1</span>
+      <span class="text-lg font-semibold">Startup 1</span>
+      </div>
+
+     </div>
+  </div>
+</div>

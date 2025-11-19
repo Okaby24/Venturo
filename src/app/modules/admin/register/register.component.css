@@ -1,0 +1,15 @@
+input[type='file'] {
+  display: none;
+}
+
+label {
+  cursor: pointer;
+}
+
+button {
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+  transform: scale(1.05);
+}

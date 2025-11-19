@@ -1,0 +1,118 @@
+<div class="w-full p-5 sm:p-5 h-screen bg-neutral-100 overflow-y-auto">
+  <h1 class="text-4xl font-bold !text-blue-700 text-center">Contact Us</h1>
+
+  <div class="grid lg:grid-cols-2 gap-5 w-full">
+    <!-- Left: Contact Information -->
+    <div
+      class="bg-white shadow-md rounded-2xl p-8 flex flex-col justify-center gap-5"
+    >
+      <div>
+        <h2 class="text-2xl font-semibold text-blue-600 mb-4">Get in Touch</h2>
+        <p class="text-gray-600">
+          We'd love to hear from you! Fill out the form or reach out directly
+          using the information below.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <span class="font-semibold text-gray-800">📍 Address:</span>
+        <span class="text-gray-600">Sheikh Zayed, Giza, Egypt</span>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <span class="font-semibold text-gray-800">📧 Email:</span>
+        <span class="text-gray-600">info@yourcompany.com</span>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <span class="font-semibold text-gray-800">📞 Phone:</span>
+        <span class="text-gray-600">+20 111 222 3333</span>
+      </div>
+
+      <!-- Optional Map -->
+
+      <iframe
+        class="w-full h-60 rounded-xl border-0"
+        loading="lazy"
+        allowfullscreen
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.056446223695!2d31.012792175330278!3d30.036529974919857!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14585bfb3cbabebd%3A0x4e9a02f5e78a47c3!2sSheikh%20Zayed%20City!5e0!3m2!1sen!2seg!4v1687891234567"
+      ></iframe>
+    </div>
+
+    <!-- Right: Contact Form -->
+    <form
+      (ngSubmit)="onSubmit()"
+      class="bg-white shadow-md rounded-2xl p-8 flex flex-col gap-5"
+    >
+      <div>
+        <label class="block text-gray-700 font-medium mb-2">Full Name</label>
+        <input
+          type="text"
+          formControlName="name"
+          placeholder="Enter your full name"
+          class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 outline-none"
+        />
+        @if (contactForm.get('name')?.touched &&
+        contactForm.get('name')?.invalid) {
+        <p class="text-red-500 text-sm mt-1">Name is required.</p>
+        }
+      </div>
+
+      <div>
+        <label class="block text-gray-700 font-medium mb-2"
+          >Email Address</label
+        >
+        <input
+          type="email"
+          formControlName="email"
+          placeholder="Enter your email"
+          class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 outline-none"
+        />
+        @if (contactForm.get('email')?.touched &&
+        contactForm.get('email')?.invalid) {
+        <p class="text-red-500 text-sm mt-1">Valid email is required.</p>
+        }
+      </div>
+
+      <div>
+        <label class="block text-gray-700 font-medium mb-2">Subject</label>
+        <input
+          type="text"
+          formControlName="subject"
+          placeholder="Message subject"
+          class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 outline-none"
+        />
+        @if (contactForm.get('subject')?.touched &&
+        contactForm.get('subject')?.invalid) {
+        <p class="text-red-500 text-sm mt-1">Subject is required.</p>
+        }
+      </div>
+
+      <div>
+        <label class="block text-gray-700 font-medium mb-2">Message</label>
+        <textarea
+          rows="5"
+          formControlName="message"
+          placeholder="Write your message here..."
+          class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 outline-none resize-none"
+        ></textarea>
+        @if (contactForm.get('message')?.touched &&
+        contactForm.get('message')?.invalid) {
+        <p class="text-red-500 text-sm mt-1">
+          Message must be at least 10 characters.
+        </p>
+        }
+      </div>
+
+      <button
+        type="submit"
+        class="bg-blue-600 !text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition disabled:opacity-50"
+        [disabled]="contactForm.invalid"
+      >
+        Send Message
+      </button>
+    </form>
+  </div>
+
+ 
+</div>

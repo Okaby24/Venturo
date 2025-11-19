@@ -1,0 +1,145 @@
+<div class="w-full p-10 h-screen bg-neutral-100 overflow-y-auto flex flex-col gap-5">
+
+  <!-- Skeleton Loader -->
+  @if (!isProfileLoaded) {
+    <div class="border border-gray-300 bg-white rounded-2xl shadow-md lg:p-8 p-4 space-y-8 animate-pulse">
+      <div class="flex flex-col lg:flex-row gap-6">
+        <div class="lg:w-[35%] w-full h-48 bg-gray-200 rounded-xl"></div>
+        <div class="flex-1 space-y-4">
+          <div class="h-8 bg-gray-300 rounded w-3/4"></div>
+          <div class="h-4 bg-gray-200 rounded w-full"></div>
+          <div class="h-4 bg-gray-200 rounded w-5/6"></div>
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-3 gap-4">
+        <div class="h-20 bg-gray-200 rounded-lg"></div>
+        <div class="h-20 bg-gray-200 rounded-lg"></div>
+        <div class="h-20 bg-gray-200 rounded-lg"></div>
+      </div>
+
+      <div class="grid md:grid-cols-3 sm:grid-cols-2 gap-5">
+        @for (_ of [1,2,3] ; track _) {
+          <div class="h-40 bg-gray-200 rounded-xl"></div>
+        }
+      </div>
+    </div>
+  }
+
+  <!-- Profile Content with fade-in -->
+  @if (isProfileLoaded) {
+    <div
+      class="border border-gray-300 bg-white rounded-2xl shadow-md lg:p-8 p-4 space-y-8 te-wrap transition-opacity duration-700 ease-in-out opacity-0 animate-fadeIn"
+      [class.opacity-100]="isProfileLoaded"
+    >
+      <!-- Header Section -->
+      <div class="gap-6">
+        @if (startup != null) {
+          <img
+            [src]="startup.image"
+            class="lg:float-left xs:w-full sm:w-full lg:w-[40%] rounded-lg shadow-md mr-5 mb-3"
+            [alt]="startup.title"
+          />
+
+          <div>
+            <div>
+              <h1 class="text-3xl lg:text-left sm:text-center font-bold !text-blue-600">
+                {{ startup.title }}
+              </h1>
+              <p class="!text-gray-500 leading-relaxed text-justify">
+                {{ startup.description }}
+              </p>
+            </div>
+
+            <div class="grid grid-cols-2 lg:grid-cols-3 sm:grid-cols-1 gap-4 mt-3">
+              <div class="bg-blue-50 p-3 rounded-lg text-center">
+                <p class="text-gray-500 text-sm">Industry</p>
+                <p class="font-semibold text-blue-700">{{ startup.industry }}</p>
+              </div>
+              <div class="bg-blue-50 p-3 rounded-lg text-center">
+                <p class="text-gray-500 text-sm">Founded</p>
+                <p class="font-semibold text-blue-700">{{ startup.founded }}</p>
+              </div>
+              <div class="bg-blue-50 p-3 rounded-lg text-center">
+                <p class="text-gray-500 text-sm">Employees</p>
+                <p class="font-semibold text-blue-700">{{ startup.employees }}</p>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Financial & Contact sections -->
+       @if (startup != null) {
+          <div class="bg-gray-50 border border-gray-200 rounded-xl p-6 space-y-4">
+            <h2 class="text-2xl font-semibold text-blue-600">Financial Overview</h2>
+            <div class="grid lg:grid-cols-3 sm:grid-cols-1 gap-4">
+              <div class="bg-white shadow p-4 rounded-lg text-center">
+                <p class="text-gray-500 text-sm">Revenue (2024)</p>
+                <p class="text-xl font-semibold text-green-600">
+                  {{ startup.revenue | currency }}
+                </p>
+              </div>
+              <div class="bg-white shadow p-4 rounded-lg text-center">
+                <p class="text-gray-500 text-sm">Profit Margin</p>
+                <p class="text-xl font-semibold text-green-600">
+                  {{ startup.profitMargin }}%
+                </p>
+              </div>
+              <div class="bg-white shadow p-4 rounded-lg text-center">
+                <p class="text-gray-500 text-sm">Total Funding</p>
+                <p class="text-xl font-semibold text-green-600">
+                  {{ startup.funding | currency }}
+                </p>
+              </div>
+            </div>
+          </div>
+        }
+
+        <!-- Documents -->
+          @if (startup != null) {
+            <div class="bg-gray-50 border border-gray-200 rounded-xl p-6 space-y-4">
+              <h2 class="text-2xl font-semibold text-blue-600">Documents</h2>
+              <div class="grid lg:grid-cols-3 sm:grid-cols-1 gap-4">
+                <div class="bg-white shadow p-4 rounded-lg text-center">
+                  Images
+                </div>
+                <div class="bg-white shadow p-4 rounded-lg text-center">
+                  Law related files
+                </div>
+               
+
+              </div>
+
+
+
+            </div>
+
+          }
+
+        <!-- Contact & CTA Section -->
+        @if (startup != null) {
+          <div class="bg-white border-t border-gray-300 pt-6 flex flex-wrap justify-between items-center">
+            <div>
+              <p class="text-gray-600">
+                📍 {{ startup.location }} | 🌐
+                <a [href]="startup.website" class="text-blue-600 hover:underline">
+                  {{ startup.website }}
+                </a>
+              </p>
+            </div>
+            <div class="flex gap-3 mt-4 lg:mt-0">
+              <button class="bg-blue-600 !text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition cursor-pointer"
+              (click)="goToContact()">
+                Contact Startup
+              </button>
+              <button class="bg-green-600 !text-white px-5 py-2 rounded-lg hover:bg-green-700 transition cursor-pointer">
+                Invest Now
+              </button>
+            </div>
+          </div>
+        }
+    </div>
+  }
+
+</div>

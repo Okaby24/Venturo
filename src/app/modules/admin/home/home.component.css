@@ -1,0 +1,32 @@
+/* :host {
+  display: block;
+}
+
+button {
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+.profileImage{
+    overflow: hidden;
+}
+.profileImage::before{
+    content: '';
+    background: conic-gradient(#206ad8 , #03c6e0 , #00ffc8 , #ff2dff);
+    animation: rotate 1s linear infinite
+}
+@keyframes rotate {
+
+    0% {
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+.profileImage::after{
+    content: "";
+    position: absolute;
+    inset: 5px;
+    background: black;
+    border-radius: 10px;
+    z-index: 1;
+} */

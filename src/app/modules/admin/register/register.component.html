@@ -1,0 +1,248 @@
+<div class="w-full p-6 sm:p-10 h-screen bg-neutral-100 ">
+  <div class="p-5 flex flex-col gap-6 w-full">
+    <h1 class="text-4xl font-bold !text-blue-800 text-center w-full">
+      Register Startup
+    </h1>
+
+    <form
+      [formGroup]="registerForm"
+      (ngSubmit)="onSubmit()"
+      class="flex flex-col gap-6"
+    >
+      <!--Basic Information -->
+      <div class="rounded-xl bg-white drop-shadow-xl p-5 flex flex-col gap-4">
+        <span class="text-blue-700 font-semibold text-2xl"
+          >Basic Information</span
+        >
+
+        <div class="grid  lg:grid-cols-[25%_65%] sm:grid-cols-1 gap-4">
+          <label for="" class="text-nowrap text-blue-500 text-xl"
+            >Startup Name</label
+          >
+          <input
+            formControlName="startupName"
+            placeholder="(eg.AquaArmor)"
+            class="input border border-black rounded-xl p-2 w-full placeholder-gray-400"
+          />
+          <label for="" class="text-nowrap text-blue-500 text-xl"
+            >Founder Name</label
+          >
+          <input
+            formControlName="founderName"
+            placeholder="(eg.Mohamed Sherif)"
+            class="input border border-black rounded-xl p-2 w-full placeholder-gray-400"
+          />
+          <label for="" class="text-nowrap text-blue-500 text-xl">Email</label>
+          <input
+            formControlName="email"
+            type="email"
+            placeholder="(eg.Mohamed.sherif@venturo.com)"
+            class="input border border-black rounded-xl p-2 w-full placeholder-gray-400"
+          />
+          <label for="" class="text-nowrap text-blue-500 text-xl"
+            >Phone Number</label
+          >
+          <input
+            formControlName="phoneNumber"
+            placeholder="(eg.01111233119)"
+            class="input border border-black rounded-xl p-2 w-full placeholder-gray-400"
+          />
+          <label for="" class="text-nowrap text-blue-500 text-xl"
+            >Registeration Number</label
+          >
+          <input
+            formControlName="registrationNumber"
+            placeholder="(eg.245876145861)"
+            class="input border border-black rounded-xl p-2 w-full placeholder-gray-400"
+          />
+          <label for="" class="text-nowrap text-blue-500 text-xl"
+            >Founded Date</label
+          >
+          <input
+            formControlName="foundedDate"
+            type="date"
+            class="input border border-black rounded-xl p-2 w-full placeholder-gray-400"
+          />
+        </div>
+      </div>
+
+      <!--Business Details -->
+      <div class="rounded-xl bg-white drop-shadow-xl p-5 flex flex-col gap-4">
+        <span class="text-blue-700 font-semibold text-2xl"
+          >Business Details</span
+        >
+
+        <div class="grid md:grid-cols-[25%_65%] sm:grid-cols-1 gap-4">
+          <label for="" class="text-nowrap text-blue-500 text-xl"
+            >Industry</label
+          >
+          <input
+            formControlName="industry"
+            placeholder="(eg.clothes, e-commerce)"
+            class="input border border-black rounded-xl p-2 w-full placeholder-gray-400"
+          />
+          <label for="" class="text-nowrap text-blue-500 text-xl">Stage</label>
+          <input
+            formControlName="stage"
+            placeholder="(e.g. MVP, Growth)"
+            class="input border border-black rounded-xl p-2 w-full placeholder-gray-400"
+          />
+          <label for="" class="text-nowrap text-blue-500 text-xl"
+            >Business Model</label
+          >
+          <input
+            formControlName="businessModel"
+            type="email"
+            placeholder="(eg.Retailer , Subscription)"
+            class="input border border-black rounded-xl p-2 w-full placeholder-gray-400"
+          />
+          <label for="" class="text-nowrap text-blue-500 text-xl"
+            >No. of Employees (if available)</label
+          >
+          <input
+            formControlName="employeesCount"
+            placeholder="(eg.10)"
+            class="input border border-black rounded-xl p-2 w-full placeholder-gray-400"
+          />
+          <label for="" class="text-nowrap text-blue-500 text-xl"
+            >Brief Description</label
+          >
+          <textarea
+            formControlName="description"
+            placeholder="Brief Description"
+            class="input border border-black rounded-xl p-2 w-full placeholder-gray-400"
+          ></textarea>
+        </div>
+      </div>
+
+      <!--Contact & Team -->
+      <div class="rounded-xl bg-white drop-shadow-xl p-5 flex flex-col gap-4">
+  <span class="text-blue-700 font-semibold text-2xl">Contact & Team</span>
+
+  <div class="grid md:grid-cols-[25%_65%] sm:grid-cols-1 gap-4">
+    <label for="" class="text-nowrap text-blue-500 text-xl">
+      Headquarters Location
+    </label>
+    <input
+      formControlName="headquarters"
+      placeholder="(e.g. Zayed, Tagamoa)"
+      class="input border border-black rounded-xl p-2 w-full placeholder-gray-400"
+    />
+
+    <label for="" class="text-nowrap text-blue-500 text-xl">
+      LinkedIn URL
+    </label>
+    <input
+      formControlName="linkedin"
+      placeholder="(e.g. www.linkedin.com/mohamed.sherif)"
+      class="input border border-black rounded-xl p-2 w-full placeholder-gray-400"
+    />
+
+    <label for="" class="text-nowrap text-blue-500 text-xl">Team Member(s)</label>
+      <div class="flex flex-col gap-3">
+
+
+  <!-- Loop through team members -->
+  @for (member of teamMembers.controls; track $index) {
+    <div class="flex items-center gap-3">
+      <input
+        [formControl]="member"
+        placeholder="Enter team member name"
+        class="border border-black rounded-xl p-2 w-full placeholder-gray-400"
+      />
+     
+         @if ($index > 0) {
+        <button
+          type="button"
+          (click)="removeTeamMember($index)"
+          class="cursor-pointer bg-red-500 !text-white px-4 py-2 rounded-lg hover:bg-red-600 transition"
+        >
+          Delete
+        </button>
+      }
+     
+    </div>
+  }
+
+  <!-- Add new member button -->
+  <button
+    type="button"
+    (click)="addTeamMember()"
+    class="cursor-pointer bg-blue-600 !text-white px-4 py-2 rounded-xl w-fit hover:bg-blue-700 transition"
+  >
+    + Add Member
+  </button>
+</div>
+  </div>
+</div>
+
+
+      <!--Documents (Uploads) -->
+      <div class="rounded-xl bg-white drop-shadow-xl p-5 flex flex-col gap-4">
+  <span class="text-blue-700 font-semibold text-2xl">Documents (Uploads)</span>
+
+  <div
+    class="p-8 border-2 border-dashed border-blue-400 bg-gray-50 rounded-xl flex flex-col justify-center items-center gap-4 h-[50vh] transition-all duration-300 ease-in-out hover:border-blue-600 hover:bg-blue-100"
+    (dragover)="onDragOver($event)"
+    (dragleave)="onDragLeave($event)"
+    (drop)="onDrop($event)"
+  >
+    <span class="text-gray-600 text-lg text-center">
+      Drag & drop your documents here, or
+      <label class="text-blue-600 underline cursor-pointer">click to upload</label>
+    </span>
+    <input
+      type="file"
+      multiple
+      (change)="onFileSelect($event)"
+      class="hidden"
+      #fileInput
+    />
+
+    <button
+      type="button"
+      class="bg-blue-600 !text-white px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition cursor-pointer"
+      (click)="fileInput.click()"
+    >
+      Browse Files
+    </button>
+  </div>
+
+  @if (files().length > 0) {
+    <div class="flex flex-col gap-4 mt-4">
+      <span class="text-blue-700 font-semibold text-lg">Upload Progress</span>
+
+      @for (file of files(); track file.name) {
+        <div class="flex flex-col gap-2 border border-gray-200 rounded-xl p-3 bg-gray-50">
+          <div class="flex justify-between items-center">
+            <span class="text-gray-700 font-medium">{{ file.name }}</span>
+            <span class="text-gray-500 text-sm">{{ file.progress }}%</span>
+          </div>
+          <nz-progress
+            [nzPercent]="file.progress"
+            [nzStatus]="file.progress === 100 ? 'success' : 'active'"
+          ></nz-progress>
+        </div>
+      }
+    </div>
+  }
+</div>
+
+
+      <!-- <div class="grid md:grid-cols-2 gap-4">
+        <input type="file" (change)="onFileChange($event, 'businessPlanFile')" class="file-input" />
+        <input type="file" (change)="onFileChange($event, 'registrationCertificate')" class="file-input" />
+        <input type="file" (change)="onFileChange($event, 'pitchDeckFile')" class="file-input" />
+        <input type="file" (change)="onFileChange($event, 'logo')" class="file-input" />
+      </div> -->
+      <!--Submit -->
+      <button
+        type="submit"
+        class="cursor-pointer bg-blue-600 !text-white font-semibold py-3 rounded-xl hover:bg-blue-700 transition-all duration-300"
+        (click)="onSubmit()"
+      >
+        Submit Startup
+      </button>
+    </form>
+  </div>
+</div>

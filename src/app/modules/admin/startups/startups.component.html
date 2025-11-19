@@ -1,0 +1,57 @@
+<div
+  class="w-full p-10 h-screen bg-neutral-100 flex flex-col gap-5"
+>
+  <div>
+    @if (startupsService.loading()) {
+    <!-- 🌀 Skeleton loader while loading -->
+    <div class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5 mt-10">
+      @for (_ of [1, 2, 3, 4, 5, 6]; track _) {
+      <div
+        class="bg-white rounded-xl col-span-1 flex flex-col items-center gap-5 p-5 animate-pulse"
+      >
+        <div class="w-full h-48 bg-gray-200 rounded-lg"></div>
+        <div class="w-1/2 h-4 bg-gray-300 rounded"></div>
+        <div class="w-3/4 h-3 bg-gray-200 rounded"></div>
+        <div class="w-full h-3 bg-gray-200 rounded"></div>
+      </div>
+      }
+    </div>
+    } @else {
+    <!-- ✅ Real startup cards -->
+    <div class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-10">
+      @for (startup of displayedStartups; track startup.id) {
+      <div
+        class="bg-white rounded-xl col-span-1 flex flex-col items-center gap-5 cursor-pointer overflow-hidden border border-blue-200 drop-shadow-xl transition-transform hover:scale-[1.02]"
+        (click)="openStartupProfile(startup.id)"
+      >
+        <img
+          [src]="startup.image"
+          [alt]="startup.title"
+          class="w-full transition-transform duration-500 ease-in-out hover:scale-105"
+        />
+        <span class="lg:text-2xl text-blue-600 font-semibold">
+          {{ startup.title }}
+        </span>
+        <span class="text-gray-600 text-center px-3 pb-5">
+          {{
+            startup.description.length > 90
+              ? (startup.description | slice : 0 : 90) + "..."
+              : startup.description
+          }}
+        </span>
+      </div>
+      }
+    </div>
+    }
+  </div>
+
+  <!-- Pagination -->
+  <div class="w-full flex justify-center items-center">
+    <nz-pagination
+      [nzPageIndex]="pageIndex"
+      [nzTotal]="startupsService.startups().length"
+      [nzPageSize]="pageSize"
+      (nzPageIndexChange)="onPageChange($event)"
+    ></nz-pagination>
+  </div>
+</div>
