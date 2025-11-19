@@ -57,3 +57,7 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+=======
+# Venturo
+Venturo connects early-stage startups with low-budget investors. Startups can register, showcase their ideas, and gain visibility. Venturo also offers career opportunities, along with jobs from registered startups, creating a space for growth, investment, and talent.
+2e42504ad603112004d6835b16c84ee6bbdb89ed
