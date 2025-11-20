@@ -1,0 +1,9 @@
+/* optional: add shadow or bounce to indicator */
+ul {
+  .absolute {
+    top: 50%;
+    transform: translateY(-50%); /* vertically center */
+    z-index: 0;
+    pointer-events: none;
+  }
+}
