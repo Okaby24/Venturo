@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {
   ApexAxisChartSeries,
   ApexChart,
@@ -8,8 +8,12 @@ import {
   ApexPlotOptions,
   ApexStroke,
   ApexGrid,
-  NgApexchartsModule
+  NgApexchartsModule,
 } from 'ng-apexcharts';
+import {
+  DashboardData,
+  HomeService,
+} from '../../../core/services/home.service';
 
 export interface BarChartOptions {
   series: ApexAxisChartSeries;
@@ -24,54 +28,40 @@ export interface BarChartOptions {
 
 @Component({
   selector: 'app-home',
+  standalone: true,
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  imports: [NgApexchartsModule]
+  imports: [NgApexchartsModule],
 })
 export class HomeComponent implements OnInit {
   public barChartOptions!: Partial<BarChartOptions>;
+  homeService = inject(HomeService);
+  dashboard: DashboardData | undefined;
 
   ngOnInit(): void {
-    this.barChartOptions = {
-      series: [
-        {
-          name: 'Sales',
-          data: [30, 40, 35, 50, 49, 60, 70]
-        }
-      ],
-      chart: {
-        type: 'bar',
-        height: 200
+    // Fetch dashboard data from backend
+    this.homeService.getDashboard().subscribe({
+      next: (data) => {
+        this.dashboard = data;
+
+        // Set chart options dynamically
+        this.barChartOptions = {
+          series: [
+            { name: 'Sales', data: data.weeklySales ?? [] }, // fallback to empty array
+          ],
+          chart: { type: 'bar', height: 200 },
+          xaxis: { categories: data.categories ?? [] }, // fallback to empty array
+          plotOptions: { bar: { horizontal: false, columnWidth: '45%' } },
+          dataLabels: { enabled: false },
+          stroke: { show: true, width: 2, colors: ['transparent'] },
+          grid: {
+            borderColor: '#f1f1f1',
+            row: { colors: ['#f9f9f9', '#ffffff'], opacity: 0.5 },
+          },
+          title: { text: 'Weekly Sales Overview', align: 'left' },
+        };
       },
-      plotOptions: {
-        bar: {
-          horizontal: false,
-          columnWidth: '45%',
-          
-        }
-      },
-      dataLabels: {
-        enabled: false
-      },
-      stroke: {
-        show: true,
-        width: 2,
-        colors: ['transparent']
-      },
-      xaxis: {
-        categories: ['Startup 1', 'Startup 2', 'Startup 3', 'Startup 4', 'Startup 5', 'Startup 6', 'Startup 7']
-      },
-      grid: {
-          borderColor: '#f1f1f1',
-  row: {
-    colors: ['#f9f9f9', '#ffffff'],
-    opacity: 0.5
-  }
-      },
-      title: {
-        text: 'Weekly Sales Overview',
-        align: 'left'
-      }
-    };
+      error: (err) => console.error('Dashboard API error:', err),
+    });
   }
 }
