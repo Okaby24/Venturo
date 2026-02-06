@@ -45,4 +45,8 @@ export class StartupsService {
   getStartupById(id: number): Startup | undefined {
     return this.startups().find((s) => s.id === id);
   }
+
+  registerStartup(formData: FormData) {
+    return this.http.post<Startup>(API_URLS.Startups.registerStartup, formData);
+  }
 }

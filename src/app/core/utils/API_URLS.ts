@@ -10,5 +10,6 @@ export const API_URLS = {
   },
   Startups: {
     getStartups: url + '/startups',
+    registerStartup: url + '/startups',
   },
 };

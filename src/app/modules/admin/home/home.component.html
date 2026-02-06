@@ -1,14 +1,14 @@
 <div class="w-full p-6 sm:p-10 h-screen bg-neutral-100 overflow-y-auto">
-  <div class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5 w-full">
+  <div class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5 w-full ">
     <!-- Total existing Startups -->
     <div
       class="bg-white p-4 sm:p-6 md:order-1 col-span-1 rounded-xl drop-shadow-xl hover:transition-all hover:-translate-2 hover:duration-500 hover:ease-in-out"
     >
-      <div class="flex flex-col gap-4">
-        <span class="font-bold text-2xl md:text-lg text-blue-600 text-nowrap"
+      <div class="flex flex-col justify-center items-center gap-5">
+        <span class="font-bold text-3xl md:text-lg text-blue-600 text-nowrap"
           >Total Existing Startups</span
         >
-        <span class="font-semibold text-green-600 text-4xl">{{
+        <span class="font-semibold text-green-600 text-3xl">{{
           dashboard?.totalExistingStartups
         }}</span>
       </div>
@@ -17,11 +17,11 @@
     <div
       class="bg-white p-4 sm:p-6 md:order-2 col-span-1 rounded-xl drop-shadow-xl hover:transition-all hover:-translate-2 hover:duration-500 hover:ease-in-out"
     >
-      <div class="flex flex-col gap-4">
+      <div class="flex flex-col justify-center items-center gap-5">
         <span class="font-bold text-2xl md:text-lg text-blue-600 text-nowrap"
           >Under Investigation Startups</span
         >
-        <span class="font-semibold text-purple-600 text-4xl">{{
+        <span class="font-semibold text-purple-600 text-3xl">{{
           dashboard?.underInvestigationStartups
         }}</span>
       </div>
@@ -30,11 +30,11 @@
     <div
       class="bg-white p-4 sm:p-6 md:order-3 col-span-1 rounded-xl drop-shadow-xl hover:transition-all hover:-translate-2 hover:duration-500 hover:ease-in-out"
     >
-      <div class="flex flex-col gap-4">
+      <div class="flex flex-col justify-center items-center gap-5">
         <span class="font-bold text-2xl md:text-lg text-blue-600 text-nowrap"
           >Total Existing Startups</span
         >
-        <span class="font-semibold text-orange-600 text-4xl">{{
+        <span class="font-semibold text-orange-600 text-3xl">{{
           dashboard?.totalExistingStartups
         }}</span>
       </div>
@@ -44,12 +44,12 @@
       class="bg-white lg:py-11 p-6 md:order-4 lg:col-span-3 sm:col-span-1 rounded-xl drop-shadow-xl hover:transition-all hover:-translate-2 hover:duration-500 hover:ease-in-out"
     >
       <div
-        class="flex lg:justify-between lg:items-center lg:flex-row flex-col gap-4"
+        class="flex lg:justify-between lg:items-center lg:flex-row flex-col justify-center items-center gap-5"
       >
-        <span class="font-bold text-2xl md:text-lg text-blue-600 text-nowrap"
+        <span class="font-bold text-3xl md:text-lg text-blue-600 text-nowrap"
           >Total undergoing negotiations</span
         >
-        <span class="font-semibold text-orange-600 text-4xl">{{
+        <span class="font-semibold text-orange-600 text-3xl">{{
           dashboard?.totalUndergoingNegotiations
         }}</span>
       </div>
@@ -59,7 +59,7 @@
     <div
       class="bg-white p-4 sm:p-6 lg:order-5 md:order-6 lg:col-span-2 md:col-span-2 lg:col-span-1 rounded-xl drop-shadow-xl"
     >
-      <h1 class="text-2xl font-semibold text-slate-700">Dashboard Overview</h1>
+      <h1 class="text-3xl font-semibold text-slate-700">Dashboard Overview</h1>
 
       <div
         class="p-5 bg-white shadow-md rounded-2xl transition-all duration-700 ease-in-out hover:shadow-lg"
@@ -82,7 +82,7 @@
     <div
       class="bg-white p-4 sm:p-6 lg:order-6 sm:order-5 lg:col-span-1 md:col-span-2 rounded-xl drop-shadow-xl flex flex-col gap-8"
     >
-      <span class="font-bold text-2xl text-blue-600">Top 5 Startups</span>
+      <span class="font-bold text-3xl text-blue-600">Top 5 Startups</span>
       <div class="flex flex-col gap-4">
         <span class="text-lg font-semibold">{{
           dashboard?.topStartups?.at(0)

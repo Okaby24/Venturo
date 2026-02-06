@@ -1,7 +1,7 @@
 <div class="w-full p-5 sm:p-5 h-screen bg-neutral-100 overflow-y-auto">
   <h1 class="text-4xl font-bold !text-blue-700 text-center">Contact Us</h1>
 
-  <div class="grid lg:grid-cols-2 gap-5 w-full">
+  <div class="grid lg:grid-cols-2 gap-5 w-full h-[calc(100vh-10rem)]">
     <!-- Left: Contact Information -->
     <div
       class="bg-white shadow-md rounded-2xl p-8 flex flex-col justify-center gap-5"
@@ -40,78 +40,81 @@
     </div>
 
     <!-- Right: Contact Form -->
-    <form
-      (ngSubmit)="onSubmit()"
-      class="bg-white shadow-md rounded-2xl p-8 flex flex-col gap-5"
-    >
-      <div>
-        <label class="block text-gray-700 font-medium mb-2">Full Name</label>
-        <input
-          type="text"
-          formControlName="name"
-          placeholder="Enter your full name"
-          class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 outline-none"
-        />
-        @if (contactForm.get('name')?.touched &&
-        contactForm.get('name')?.invalid) {
-        <p class="text-red-500 text-sm mt-1">Name is required.</p>
-        }
-      </div>
-
-      <div>
-        <label class="block text-gray-700 font-medium mb-2"
-          >Email Address</label
+     <div class="bg-white shadow-md rounded-2xl p-8 flex flex-col justify-center gap-5">
+       <form
+         (ngSubmit)="onSubmit()"
+         class=""
+       >
+         <div>
+           <label class="block text-gray-700 font-medium mb-2">Full Name</label>
+           <input
+             type="text"
+             formControlName="name"
+             placeholder="Enter your full name"
+             class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 outline-none"
+           />
+           @if (contactForm.get('name')?.touched &&
+           contactForm.get('name')?.invalid) {
+           <p class="text-red-500 text-sm mt-1">Name is required.</p>
+           }
+         </div>
+   
+         <div>
+           <label class="block text-gray-700 font-medium mb-2"
+             >Email Address</label
+           >
+           <input
+             type="email"
+             formControlName="email"
+             placeholder="Enter your email"
+             class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 outline-none"
+           />
+           @if (contactForm.get('email')?.touched &&
+           contactForm.get('email')?.invalid) {
+           <p class="text-red-500 text-sm mt-1">Valid email is required.</p>
+           }
+         </div>
+   
+         <div>
+           <label class="block text-gray-700 font-medium mb-2">Subject</label>
+           <input
+             type="text"
+             formControlName="subject"
+             placeholder="Message subject"
+             class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 outline-none"
+           />
+           @if (contactForm.get('subject')?.touched &&
+           contactForm.get('subject')?.invalid) {
+           <p class="text-red-500 text-sm mt-1">Subject is required.</p>
+           }
+         </div>
+   
+         <div>
+           <label class="block text-gray-700 font-medium mb-2">Message</label>
+           <textarea
+             rows="5"
+             formControlName="message"
+             placeholder="Write your message here..."
+             class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 outline-none resize-none"
+           ></textarea>
+           @if (contactForm.get('message')?.touched &&
+           contactForm.get('message')?.invalid) {
+           <p class="text-red-500 text-sm mt-1">
+             Message must be at least 10 characters.
+           </p>
+           }
+         </div>
+   
+        </form>
+        <button
+          type="submit"
+          class="bg-blue-600 !text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition disabled:opacity-50"
+          [disabled]="contactForm.invalid"
         >
-        <input
-          type="email"
-          formControlName="email"
-          placeholder="Enter your email"
-          class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 outline-none"
-        />
-        @if (contactForm.get('email')?.touched &&
-        contactForm.get('email')?.invalid) {
-        <p class="text-red-500 text-sm mt-1">Valid email is required.</p>
-        }
-      </div>
+          Send Message
+        </button>
 
-      <div>
-        <label class="block text-gray-700 font-medium mb-2">Subject</label>
-        <input
-          type="text"
-          formControlName="subject"
-          placeholder="Message subject"
-          class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 outline-none"
-        />
-        @if (contactForm.get('subject')?.touched &&
-        contactForm.get('subject')?.invalid) {
-        <p class="text-red-500 text-sm mt-1">Subject is required.</p>
-        }
-      </div>
-
-      <div>
-        <label class="block text-gray-700 font-medium mb-2">Message</label>
-        <textarea
-          rows="5"
-          formControlName="message"
-          placeholder="Write your message here..."
-          class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 outline-none resize-none"
-        ></textarea>
-        @if (contactForm.get('message')?.touched &&
-        contactForm.get('message')?.invalid) {
-        <p class="text-red-500 text-sm mt-1">
-          Message must be at least 10 characters.
-        </p>
-        }
-      </div>
-
-      <button
-        type="submit"
-        class="bg-blue-600 !text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition disabled:opacity-50"
-        [disabled]="contactForm.invalid"
-      >
-        Send Message
-      </button>
-    </form>
+     </div>
   </div>
 
    <div class="pb-10">
